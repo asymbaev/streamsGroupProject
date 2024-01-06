@@ -54,6 +54,18 @@ public class Student {
         this.age = age; // Setter for age
     }
 
+
+//    public String toString() {
+//        return "Student{" +
+//                "id=" + id +
+//                ", first_name='" + first_name + '\'' +
+//                ", last_name='" + last_name + '\'' +
+//                ", email='" + email + '\'' +
+//                ", gender='" + gender + '\'' +
+//                ", dob=" + dob +
+//                '}';
+//    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -63,6 +75,7 @@ public class Student {
                 ", email='" + email + '\'' +
                 ", gender='" + gender + '\'' +
                 ", dob=" + dob +
+                ", age=" + age +
                 '}';
     }
 }

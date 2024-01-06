@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static challenges.CarOps.*;
 import static data.FetchData.getCarList;
@@ -17,6 +18,7 @@ import static data.FetchData.getStudentList;
 public class Main {
     public static void main(String[] args) throws IOException {
         List<Car> cars = getCarList();
+        List<Student> students = getStudentList();
         System.out.println("Question1: +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
         getCarList().stream()
@@ -28,7 +30,7 @@ public class Main {
                 .forEach(System.out::println);
 
         System.out.println("Question2 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        List<Student> sortedStudents = StudentOps.sortStudentsByAge(getStudentList());
+        List<Student> sortedStudents = StudentOps.sortStudentsByAge(students);
 
         if (sortedStudents != null) {
             sortedStudents.forEach(student -> {
@@ -39,7 +41,11 @@ public class Main {
 //        System.out.println("Question21 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 //        List<Car> SpecificMake = carWithSpecificMake(cars);
 //        System.out.println(SpecificMake);
+
 //
+
+
+
 
         System.out.println("Question31 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         Map<String, Long> carCountsByMake = CarOps.countCarsByMake(cars);
@@ -125,6 +131,56 @@ public class Main {
 
         List<Car> theNewestCar = newestCarFromTheList(cars);
         System.out.println("The newest car are: " + theNewestCar);
+
+        System.out.println("++++++++++++++++++++++++++++++++++++++=");
+        //3
+
+        StudentOps.sortByDob(students)
+                        .stream()
+                                .limit(50)
+                                        .forEach(System.out::println);
+        System.out.println(StudentOps.averageAge(students));
+
+
+
+        //4
+        StudentOps.printNames(students)
+                .stream()
+                .limit(50)
+                .forEach(System.out::println);
+        System.out.println(StudentOps.printNames(students));
+
+
+        //5
+        StudentOps.groupByGender(students);
+        System.out.println(StudentOps.groupByGender(students));
+
+
+        //6
+        System.out.println(StudentOps.maxAge(students));
+
+        //7
+        System.out.println(StudentOps.toMap(students));
+
+        // 8
+        System.out.println(StudentOps.emails(students));
+
+        // 9
+        System.out.println(StudentOps.adult(students));
+
+        //10
+        StudentOps.numGender(students)
+                .forEach((x,y) -> System.out.println(x+" " + y.stream().count()));
+
+        // 11
+        System.out.println(StudentOps.youngFem(students));
+
+        // 12
+        System.out.println(StudentOps.joinName(students));
+
+        //13
+        System.out.println(StudentOps.sumAge(students));
+
 
     }
 
