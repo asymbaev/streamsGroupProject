@@ -53,9 +53,16 @@ public class CarOps {
                 .collect(Collectors.toList());
     }
     // 27 Sort by Price (descending): Sort the list of cars based on the price in descending order.
-//    public static List<Car> carSortDesc (List<Car> cars) {
-//        return cars.stream()
-//    }
+    public static List<Car> carSortDesc (List<Car> cars) {
+        return cars.stream()
+                .sorted(Comparator.comparing(Car::getPrice).reversed())
+                .collect(Collectors.toList());
+    }
+    // 28 Get the Highest Priced Car: Find the car with the highest price.
+    public static List<Car> carHighPrice(List<Car> cars) {
+        return cars.stream()
+
+    }
 
 
     //31. Count Cars by Make: Count the number of cars for each make.
