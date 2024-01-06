@@ -7,6 +7,7 @@ import java.time.Period;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class StudentOps {
@@ -135,6 +136,66 @@ public class StudentOps {
 
     }
     // 14 Check if All Students are Adults: Check if all students are adults (age 18 or older).
+    public static Boolean adultStudent(List<Student> students) {
+                long studentCount = students.stream().count();
+                long adultStudent = students.stream().filter(x -> x.getAge() >= 18).count();
+                return studentCount == adultStudent;
+
+
+    }
+
+    // 15 Find Oldest Student: Find the oldest student.
+    public static Optional<Student> oldStudent(List<Student> students) {
+        return students
+                .stream()
+                .max(Comparator.comparing(Student::getAge));
+
+
+    }
+
+    // 16 Convert to Uppercase: Convert all student first names to uppercase.
+    public static List<String> upperCase(List<Student> students) {
+
+        return students
+                .stream()
+                .map(x -> x.getFirst_name().toUpperCase())
+                .toList();
+    }
+
+    // 17 Find Student by ID: Find a student by their ID.
+    public static Student findId (List<Student> students, int id) {
+        return students
+                .stream()
+                .filter(x-> x.getId().equals(id)).findFirst().orElse(null);
+
+    }
+
+    // 18 Compute Age Distribution: Compute the distribution of ages (e.g., count of students for each age).
+    public static Map<Integer, Long> countSt (List<Student> students) {
+        return students
+                .stream()
+                .collect(Collectors.groupingBy(Student::getAge, Collectors.counting()));
+
+
+    }
+    // 19 Group Students by Age: Group the students by their age.
+    public static Map<Integer, List<Student>> studentAge (List<Student> students) {
+        return students
+                .stream()
+                .collect(Collectors.groupingBy(Student::getAge));
+    }
+    // 20 Calculate Age Standard Deviation: Calculate the standard deviation of ages for all students.
+    public static double deviationAge(List<Student> students) {
+        double mean = students.stream()
+                .mapToDouble(Student::getAge)
+                .average()
+                .orElse(0.0);
+        double sumDiff = students.stream()
+                .mapToDouble(student -> Math.pow(student.getAge() - mean, 2))
+                .sum();
+        return Math.sqrt(sumDiff / students.size());
+    }
+
 
 
 

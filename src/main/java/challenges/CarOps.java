@@ -16,6 +16,48 @@ public class CarOps {
                 .filter(car -> car.getMake().equalsIgnoreCase("Ford"))
                 .collect(Collectors.toList());
     }
+
+    // 22 Filter by Year: Filter the list of cars to only include cars from a specific year.
+    public static List<Car> carWithSpecificYear(List<Car> cars){
+        return cars.stream()
+                .filter(car -> car.getYear() == 2012)
+                .collect(Collectors.toList());
+
+    }
+
+    // 23 Filter by Price: Filter the list of cars to only include cars within a price range.
+
+    public static List<Car> carWithPriceRange (List<Car> cars, int minPrice, int maxPrice) {
+        return cars.stream()
+                .filter(car -> car.getPrice() >= minPrice && car.getPrice() <= maxPrice)
+                .collect(Collectors.toList());
+    }
+
+    // 24 Map to Model Names: Create a list of car model names from the list of cars.
+    public static List<String> carModelNames (List<Car> cars) {
+        return cars.stream()
+                .map(Car::getModel)
+                .toList();
+    }
+
+    // 25 Map to Upper Case Makes: Create a list of car makes in uppercase from the list of cars.
+    public static List<String> carUpperMakes (List<Car> cars) {
+        return cars.stream()
+                .map(car -> car.getMake().toUpperCase())
+                .toList();
+    }
+    // 26 Sort by Year: Sort the list of cars based on the year in ascending order.
+    public static List<Car> carSortedYear (List<Car> cars) {
+        return cars.stream()
+                .sorted(Comparator.comparingInt(Car::getYear))
+                .collect(Collectors.toList());
+    }
+    // 27 Sort by Price (descending): Sort the list of cars based on the price in descending order.
+//    public static List<Car> carSortDesc (List<Car> cars) {
+//        return cars.stream()
+//    }
+
+
     //31. Count Cars by Make: Count the number of cars for each make.
     public static Map<String, Long> countCarsByMake (List<Car> cars){
         return cars.stream()

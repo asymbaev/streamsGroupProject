@@ -181,6 +181,40 @@ public class Main {
         //13
         System.out.println(StudentOps.sumAge(students));
 
+        //14
+        System.out.println(StudentOps.adultStudent(students));
+
+        // 15
+        System.out.println(StudentOps.oldStudent(students));
+
+        // 16
+        System.out.println(StudentOps.upperCase(students));
+
+        // 17
+        System.out.println(StudentOps.findId(students, 50));
+        // 18
+        StudentOps.countSt(students)
+                .forEach((age,count) -> System.out.println(age + " " + count));
+        // 19
+        StudentOps.studentAge(students)
+                .forEach((age, studentList) -> System.out.println(age + " " + studentList));
+        // 20
+        System.out.println(StudentOps.deviationAge(students));
+
+        //22
+        System.out.println(carWithSpecificYear(cars));
+        // 23
+        System.out.println(carWithPriceRange(cars, 155431, 200245));
+
+        // 24
+        System.out.println(carModelNames(cars));
+
+        //25
+        System.out.println(carUpperMakes(cars));
+
+        // 26
+        System.out.println(carSortedYear(cars));
+
 
     }
 
