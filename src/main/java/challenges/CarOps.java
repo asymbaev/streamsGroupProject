@@ -59,8 +59,24 @@ public class CarOps {
                 .collect(Collectors.toList());
     }
     // 28 Get the Highest Priced Car: Find the car with the highest price.
-    public static List<Car> carHighPrice(List<Car> cars) {
+    public static double carHighPrice(List<Car> cars) {
         return cars.stream()
+                .mapToDouble(Car::getPrice).max()
+                .orElse(0.0);
+
+
+    }
+
+    // 29 Get the Lowest Priced Car: Find the car with the lowest price.
+    public static double carLowPrice(List<Car> cars) {
+        return cars.stream()
+                .mapToDouble(Car::getPrice).min()
+                .orElse(0.0);
+    }
+    // 30 Group by Make: Group the cars by their make.
+    public static Map<String, List<Car>> groupByMake (List<Car> cars) {
+        return cars.stream()
+                .collect(Collectors.groupingBy(Car::getMake));
 
     }
 

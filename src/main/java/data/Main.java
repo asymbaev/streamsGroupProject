@@ -217,6 +217,14 @@ public class Main {
 
         // 27
         System.out.println(carSortDesc(cars));
+        //28
+        System.out.println(carHighPrice(cars));
+        //29
+        System.out.println(carLowPrice(cars));
+
+        // 30
+        CarOps.groupByMake(cars)
+                .forEach((car, make) -> System.out.println(car + " " + make));
 
 
     }
